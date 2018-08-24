@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="blog-posts-events-demo">
+        <div :style="{fontSize: postFontSize + 'em'}">
+            <blog-post
+            v-for="post in posts"
+            v-bind:key="post.id"
+            v-bind:post="post"
+            v-on:enlarge-text="postFontSize += 0.1"
+            >
+            </blog-post>
+        </div>
+
+    </div>
+</body>
+<script>
+    new Vue({
+        el:"#blog-posts-events-demo",
+        data:{
+            posts:[
+                {
+                    id:1,
+                    title:'hi',
+                    content:'...content...'
+                },
+                {
+                    id:2,
+                    title:'hello',
+                    content:'...content...'
+                }
+            ],
+            postFontSize:1
+        }
+    })
+    Vue.component('blog-post',{
+        props:['post'],
+        template:'<h3>hello</h3>'
+        }
+    )
+</script>
+</html>
